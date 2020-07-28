@@ -1,0 +1,91 @@
+{
+  "name": "{{ name }}",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "lf-engine dev",
+    "dev": "lf-engine dev",
+    "build": "lf-engine build",
+    "build:dll": "lf-engine dll -m vue,vue-router,vuex -o vendor",
+    "lint:check": "eslint --ext .js,.ts,.vue src",
+    "lint:fix": "eslint --ext .js,.ts,.vue src --fix"
+  },
+  "dependencies": {
+    "raven-js": "^3.27.2",
+    "vue": "^3.0.0-beta.20",
+    "vue-router": "^4.0.0-beta.2",
+    "vuex": "^4.0.0-beta.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/babel-plugin-transform-vue-jsx": "^1.1.2",
+    "@vue/compiler-sfc": "^3.0.0-beta.20",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "eslint": "^7.4.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.2.5",
+    "legoflow-engine": "^3.0.0-rc.1",
+    "lint-staged": "^10.2.11",
+    "vue-loader": "^16.0.0-beta.4",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@vue/babel-plugin-transform-vue-jsx",
+      ["@babel/plugin-transform-runtime", { "corejs": 2 }]
+    ]
+  },
+  "postcss": {
+    "stage": 0,
+    "plugins": {
+      "postcss-preset-env": {}
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard",
+      "@vue/typescript/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "ignorePatterns": ["node_modules", "dist"]
+  },
+  "lint-staged": {
+    "./src/**/*.{js,jsx,ts,tsx,vue}": [
+      "npm run lint:check"
+    ]
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "android >= 4",
+    "iOS 8"
+  ]
+}

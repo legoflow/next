@@ -1,0 +1,49 @@
+image: harbor.yy.com/front_end/node:12.7.0
+
+stages:
+  - build
+  - release
+
+# 安装依赖
+before_script:
+  - yarn config set registry https://npm-registry.yy.com
+
+# 构建
+build:
+  stage: build
+  tags:
+    - webfe
+  only:
+    - master
+    - test
+  artifacts:
+    expire_in: 1 week
+    paths:
+    - dist
+    - package.json
+  script:
+    - cp -r /data/lfx-vue-pre-installed/node_modules ./node_modules
+    - yarn install
+    - npm run build
+
+.release:
+  stage: release
+  tags:
+    - webfe
+  script:
+    - yarn global add @yy/rv-cli
+    - find ./dist/js/ -name '*.map' -type f -print -exec rm -rf {} \;
+    - rv dist --ignoreNotice
+
+# 发布 - 测试环境
+release_test:
+  extends: .release
+  only:
+    - test
+
+# 发布 - 生产环境
+release_prod:
+  extends: .release
+  when: manual
+  only:
+    - master

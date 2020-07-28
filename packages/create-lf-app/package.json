@@ -1,0 +1,41 @@
+{
+  "name": "create-lf-app",
+  "version": "3.0.0-rc.1",
+  "description": "legoflow workflow",
+  "keywords": [
+    "legoflow",
+    "legoflow-cli",
+    "lf",
+    "create-lf-app",
+    "lf-app"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/legoflow/next.git"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "author": "lijialiang@yy.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/legoflow/next/issues"
+  },
+  "homepage": "https://github.com/legoflow/next#readme",
+  "dependencies": {
+    "cac": "^6.5.2",
+    "chalk": "^2.4.2",
+    "del": "^5.0.0",
+    "download-git-repo": "^2.0.0",
+    "execa": "^2.0.3",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.6",
+    "inquirer": "^6.4.1",
+    "mustache": "^3.0.1",
+    "ora": "^3.4.0"
+  },
+  "bin": {
+    "create-lf-app": "./bin/cli.js"
+  }
+}
