@@ -28,10 +28,18 @@
     "lerna": "^3.16.4",
     "lint-staged": "^10.2.11"
   },
+  "eslintConfig": {
+    "extends": [
+      "standard"
+    ]
+  },
   "lint-staged": {
     "*.{js}": [
       "npm run lint:check"
     ]
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   },
   "husky": {
     "hooks": {
