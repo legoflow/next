@@ -6,11 +6,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 1.0.2 (2020-07-30)
 
 **Note:** Version bump only for package legoflow-plugin-test
-
-
-
-
-
-## 1.0.1 (2020-07-13)
-
-**Note:** Version bump only for package legoflow-plugin-test
