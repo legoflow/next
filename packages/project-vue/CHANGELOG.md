@@ -3,14 +3,9 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## 1.0.2 (2020-07-30)
-
-**Note:** Version bump only for package legoflow-plugin-test
+# 3.1.0 (2020-07-30)
 
 
+### Features
 
-
-
-## 1.0.1 (2020-07-13)
-
-**Note:** Version bump only for package legoflow-plugin-test
+* .gitignore ([f8a95fc](https://github.com/legoflow/next/commit/f8a95fcf052b1ea0d2edd53b8657afbd3affe19c))
