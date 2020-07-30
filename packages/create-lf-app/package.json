@@ -22,6 +22,9 @@
   "bugs": {
     "url": "https://github.com/legoflow/next/issues"
   },
+  "scripts": {
+    "test": "./bin/cli.js"
+  },
   "homepage": "https://github.com/legoflow/next#readme",
   "dependencies": {
     "cac": "^6.5.2",
@@ -31,6 +34,7 @@
     "execa": "^2.0.3",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.6",
+    "got": "^11.5.1",
     "inquirer": "^6.4.1",
     "mustache": "^3.0.1",
     "ora": "^3.4.0"

@@ -12,6 +12,7 @@ const execa = require('execa')
 const Mustache = require('mustache')
 const ora = require('ora')
 const del = require('del')
+const got = require('got')
 
 module.exports = async ({ name, remote }) => {
   let projectName = name
@@ -38,14 +39,15 @@ module.exports = async ({ name, remote }) => {
   // 没有指定 remote，默认拉取所有远程模板信息
   if (!remote) {
     const spinner = ora('拉取模板中...').start()
-    const { stdout: npmResult } = await execa.command(`npm search --json ${remoteTemplatePrefix} --long true`)
-    const { stdout: yyNpmResult } = await execa.command(`npm search --json @yy/${remoteTemplatePrefix}`)
-    const allRemoteProjectTemplateJsonData = JSON.parse(npmResult).concat(JSON.parse(yyNpmResult).filter(item => item.name.indexOf('@yy') >= 0))
+
+    const { body: npmResult } = await got('https://registry.npmjs.org/-/v1/search?text=legoflow-project-')
+
+    const allRemoteProjectTemplateJsonData = (JSON.parse(npmResult).objects).filter(item => item.package.name.indexOf('legoflow-project-') >= 0)
     const allRemoteProjectTemplate = []
 
     spinner.stop()
 
-    allRemoteProjectTemplateJsonData.map(item => {
+    allRemoteProjectTemplateJsonData.map(({ package: item }) => {
       if (item.description === 'archived') return
       if (item.name.indexOf(remoteTemplatePrefix) >= 0) {
         const name = item.name.split(remoteTemplatePrefix)[1]
