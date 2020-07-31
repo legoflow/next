@@ -66,7 +66,12 @@ module.exports = async ({ name, remote }) => {
     }])
 
     remote = _template
-    allRemoteProjectTemplateJsonData.map(item => item.name === _template && (template = item))
+    allRemoteProjectTemplateJsonData.map(item => item.package.name === _template && (template = item))
+  }
+
+  if (!template) {
+    console.log(chalk.red('模板配置 undefined'))
+    process.exit(1)
   }
 
   // 拉取远程模板
