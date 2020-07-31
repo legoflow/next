@@ -66,7 +66,7 @@ module.exports = async ({ name, remote }) => {
     }])
 
     remote = _template
-    allRemoteProjectTemplateJsonData.map(item => item.package.name === _template && (template = item))
+    allRemoteProjectTemplateJsonData.map(item => item.package.name === _template && (template = item.package))
   }
 
   if (!template) {
