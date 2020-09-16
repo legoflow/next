@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/legoflow/next/compare/legoflow-project-vue@3.1.1...legoflow-project-vue@3.1.2) (2020-09-16)
+
+
+### Bug Fixes
+
+* raven-js 依赖 ([e4b0e53](https://github.com/legoflow/next/commit/e4b0e530c76683d4af17496f7320370c52f7e88a))
+
+
+
+
+
 ## [3.1.1](https://github.com/legoflow/next/compare/legoflow-project-vue@3.1.0...legoflow-project-vue@3.1.1) (2020-09-14)
 
 
