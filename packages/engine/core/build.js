@@ -41,9 +41,13 @@ module.exports = async options => {
 
   // 启动 webpack
   webpackConfig = webpackConfig.toConfig ? webpackConfig.toConfig() : webpackConfig
-  require('webpack')(webpackConfig, (err, stats) => {
-    if (err) {
-      console.error(err)
+  require('webpack')(webpackConfig, (error, stats) => {
+    if (error || stats.hasErrors()) {
+      error && console.error(error)
+      stats.hasErrors() && console.error(stats.toString({
+        chunks: false,
+        colors: true
+      }))
       process.exit(1)
     }
 
