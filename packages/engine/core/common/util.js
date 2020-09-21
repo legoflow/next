@@ -52,7 +52,7 @@ exports.getSourceMap = () => {
  * 获取是否带 hash
  */
 exports.isWithHash = () => {
-  if (process.env.disableFileNameHash) {
+  if (process.env.lf$disableFileNameHash) {
     return ''
   }
 

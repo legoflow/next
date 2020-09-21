@@ -79,7 +79,7 @@ module.exports = ({ config }) => {
     .rule('image')
     .test(/\.(png|jpg|gif|jpeg|svg)$/)
     .use('url-loader').loader('url-loader').options({
-      limit: 1024 * parseInt(process.env.base64ImageMaxSize || 1),
+      limit: 1024 * parseInt(process.env.lf$base64ImageMaxSize || 1),
       name: `img/[name]${hash}.[ext]`,
       esModule: false
     }).end()

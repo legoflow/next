@@ -7,8 +7,8 @@ const { extendConfig, setMode, logVersion, loadPlugins } = require('./common/uti
 const logProgress = require('./common/log-progress')
 
 module.exports = async options => {
-  options.base64ImageMaxSize && (process.env.base64ImageMaxSize = options.base64ImageMaxSize)
-  options.disableFileNameHash && (process.env.disableFileNameHash = options.disableFileNameHash)
+  options.base64ImageMaxSize && (process.env.lf$base64ImageMaxSize = options.base64ImageMaxSize)
+  options.disableFileNameHash && (process.env.lf$disableFileNameHash = options.disableFileNameHash)
 
   const mode = 'production'
 
