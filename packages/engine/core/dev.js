@@ -87,6 +87,11 @@ module.exports = async () => {
     const protocol = webpackDevServerConfig.https ? 'https:' : 'http:'
     const hasError = stats.hasErrors()
 
+    hasError && console.error(stats.toString({
+      chunks: false,
+      colors: true
+    }))
+
     console.log('  App running at:')
     console.log(`  - Local:   ${(!hasError ? chalk.cyan : chalk.red)(`${protocol}//127.0.0.1:${port}/`)}`)
     console.log(`  - Network: ${(!hasError ? chalk.cyan : chalk.red)(`${protocol}//${process.env.DOCKER_HOST_IP || ip}:${port}/`)}`)
