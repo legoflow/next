@@ -71,10 +71,8 @@ module.exports = async () => {
   webpackConfig = webpackConfig.toConfig ? webpackConfig.toConfig() : webpackConfig
 
   const compiler = require('webpack')(webpackConfig)
-  const port = await new Promise(resolve => findFreePort(8080, ip, (err, port) => {
-    if (err) {
-      console.error(err)
-    }
+  const port = await new Promise(resolve => findFreePort(8080, ip, (error, port) => {
+    if (error) throw error
     resolve(port)
   }))
 
