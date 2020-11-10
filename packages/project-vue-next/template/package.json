@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "raven-js": "^3.27.2",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-beta.11",
-    "vuex": "^4.0.0-beta.4"
+    "vue": "^3.0.2",
+    "vue-router": "^4.0.0-rc.2",
+    "vuex": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -22,7 +22,7 @@
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "@vue/babel-plugin-transform-vue-jsx": "^1.1.2",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/compiler-sfc": "^3.0.2",
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/eslint-config-typescript": "^5.1.0",
     "eslint": "^7.9.0",
@@ -30,11 +30,11 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.1.0",
     "husky": "^4.2.5",
     "legoflow-engine": "^3.0.0",
     "lint-staged": "^10.2.11",
-    "vue-loader": "^16.0.0-beta.7",
+    "vue-loader": "^16.0.0-rc.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.12"
   },
