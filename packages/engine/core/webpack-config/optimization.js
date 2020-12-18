@@ -30,17 +30,6 @@ module.exports = ({ config }) => {
 
   config
     .optimization
-    .minimizer('optimize-css-assets-webpack-plugin')
-    .use(require('optimize-css-assets-webpack-plugin'), [{
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorOptions: {
-        autoprefixer: { browsers: ['> 0.01%'] },
-        map: {
-          inline: false,
-          annotation: true
-        }
-      },
-      canPrint: true
-    }])
+    .minimizer('css-minimizer-webpack-plugin')
+    .use(require('css-minimizer-webpack-plugin'), [{}])
 }
