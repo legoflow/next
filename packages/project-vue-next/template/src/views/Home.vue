@@ -7,10 +7,10 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 
 export default {
-  setup () {
+  setup (): { title: string, count: Ref<number> } {
     const title = 'Vue.js From LegoFlow'
     const count = ref(0)
 
