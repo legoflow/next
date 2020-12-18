@@ -10,8 +10,6 @@ module.exports = ({ config }) => {
   const hash = isWithHash()
 
   const miniCssOptions = {
-    hmr: mode === 'development',
-    reloadAll: true,
     publicPath: '../'
   }
 

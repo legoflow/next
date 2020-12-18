@@ -10,6 +10,9 @@ module.exports = () => {
   const sourceMap = getSourceMap()
   const config = new Config()
 
+  // target
+  config.target('web')
+
   // mode
   config.mode(mode)
 

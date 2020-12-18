@@ -52,10 +52,6 @@ module.exports = ({ config }) => {
     config
       .plugin('friendly-errors-webpack-plugin')
       .use(require('friendly-errors-webpack-plugin'))
-
-    config
-      .plugin('webpack/HotModuleReplacementPlugin')
-      .use(webpack.HotModuleReplacementPlugin)
   }
 
   // 构建环境插件
