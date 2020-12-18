@@ -7,9 +7,7 @@ module.exports = ({ config }) => {
     .optimization
     .minimizer('terser-webpack-plugin')
     .use(require('terser-webpack-plugin'), [{
-      cache: true,
       parallel: true,
-      sourceMap: true,
       terserOptions: {
         parse: {
           ecma: 8
