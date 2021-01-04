@@ -1,4 +1,4 @@
-image: harbor.yy.com/front_end/node:12.7.0
+image: harbor.duowan.com/front_end/node:12.7.0
 
 stages:
   - build
@@ -6,13 +6,13 @@ stages:
 
 # 安装依赖
 before_script:
-  - yarn config set registry https://npm-registry.yy.com
+  - yarn config set registry https://npm-registry.duowan.com
 
 # 构建
 build:
   stage: build
   tags:
-    - webfe
+    - yyci_office
   only:
     - master
     - test
