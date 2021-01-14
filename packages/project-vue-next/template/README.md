@@ -32,4 +32,4 @@ $ yarn build
 ## 相关文档
 
 * [LegoFlow v3](https://legoflow.com/v3/)
-* [rv-cli](https://git.yy.com/opensource/ued/release-version-cli)
+* [rv-cli](https://git.duowan.com/opensource/ued/release-version-cli)

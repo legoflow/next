@@ -154,8 +154,8 @@ module.exports = async ({ name, remote }) => {
   console.log(`✨ Created project in ${chalk.yellow(projectPath)}`)
   console.log('🚀 Installing dependencies...\n')
 
-  // 创建 .npmrc (yy npm 源)
-  template.description.indexOf('YY') >= 0 && fs.writeFileSync(path.resolve(projectPath, '.npmrc'), 'registry=https://npm-registry.yy.com')
+  // 创建 .npmrc (duowan npm 源)
+  template.description.indexOf('YY') >= 0 && fs.writeFileSync(path.resolve(projectPath, '.npmrc'), 'registry=https://npm-registry.duowan.com')
 
   // 安装 node_modules 依赖
   await execa.command(`${answers.nodeModulesInstallMethod} install`, { cwd: projectPath, stdio: 'inherit' })

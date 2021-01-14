@@ -29,7 +29,7 @@ build:
 .release:
   stage: release
   tags:
-    - webfe
+    - yyci_office
   script:
     - yarn global add @yy/rv-cli
     - find ./dist/js/ -name '*.map' -type f -print -exec rm -rf {} \;
