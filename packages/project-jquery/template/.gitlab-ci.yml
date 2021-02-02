@@ -1,5 +1,10 @@
 image: harbor.duowan.com/front_end/node:12.7.0
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules
+
 stages:
   - build
   - release
@@ -22,7 +27,6 @@ build:
     - dist
     - package.json
   script:
-    - cp -r /data/lfx-vue-pre-installed/node_modules ./node_modules
     - yarn install
     - npm run build
 
