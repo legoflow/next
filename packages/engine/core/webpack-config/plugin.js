@@ -109,14 +109,14 @@ module.exports = ({ config }) => {
 
       config
         .plugin('copy-webpack-plugin')
-        .use(require('copy-webpack-plugin'), [
-          dllFiles.map(file => {
+        .use(require('copy-webpack-plugin'), [{
+          patterns: dllFiles.map(file => {
             return {
               from: file,
               to: path.join(projectRoot, 'dist', 'js', path.basename(file))
             }
           })
-        ])
+        }])
     }
   }
 }
