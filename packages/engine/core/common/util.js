@@ -56,7 +56,7 @@ exports.isWithHash = () => {
     return ''
   }
 
-  return getMode() === 'development' ? '' : '.[fullhash:8]'
+  return getMode() === 'development' ? '' : '.[contenthash:8]'
 }
 
 /**
