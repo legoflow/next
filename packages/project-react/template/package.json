@@ -10,29 +10,28 @@
     "lint:fix": "eslint --ext .js,.ts,.tsx src --fix"
   },
   "dependencies": {
-    "@types/node": "^12.6.8",
-    "@types/react": "^16.8.23",
-    "@types/react-dom": "^16.8.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "@types/node": "^14.14.24",
+    "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.12.13",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.4.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint": "^7.19.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-config-standard-with-typescript": "^20.0.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "husky": "^4.2.5",
-    "legoflow-engine": "^3.0.0",
-    "lint-staged": "^10.2.11",
-    "tslint": "^6.1.2"
+    "husky": "^4.3.8",
+    "legoflow-engine": "^3.1.0",
+    "lint-staged": "^10.5.3",
+    "tslint": "^6.1.3"
   },
   "babel": {
     "presets": [
@@ -40,7 +39,12 @@
     ],
     "plugins": [
       "@babel/plugin-transform-react-jsx",
-      ["@babel/plugin-transform-runtime", { "corejs": 2 }]
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "corejs": 2
+        }
+      ]
     ]
   },
   "postcss": {
@@ -50,17 +54,18 @@
     }
   },
   "eslintConfig": {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "extends": [
-      "standard"
-    ],
-    "plugins": [],
+    "extends": "standard-with-typescript",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
     "globals": {
       "Promise": true,
       "process": true
     },
-    "ignorePatterns": ["node_modules", "dist"]
+    "ignorePatterns": [
+      "node_modules",
+      "dist"
+    ]
   },
   "lint-staged": {
     "./src/**/*.{js,jsx,ts,tsx,vue}": [
@@ -68,7 +73,9 @@
     ]
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "husky": {
     "hooks": {
