@@ -57,12 +57,25 @@ module.exports = ({ config }) => {
     .end()
     .end()
 
-  // 普通 sass 类型文件
+  // sass 类型文件
   config
     .module
     .rule('sass')
     .test(/\.s(a|c)ss$/)
-    .oneOf('normal-scss')
+    .oneOf('modules-scss') // *.scss?modules
+    .resourceQuery(/modules/)
+    .use('style-loader').loader('style-loader').end()
+    .use('css-loader').loader('css-loader').options({
+      modules: {
+        localIdentName: '[name]__[local]-[hash:base64:5]'
+      }
+    }).end()
+    .use('postcss-loader').loader('postcss-loader').end()
+    .use('sass-loader').loader('sass-loader').options({
+      implementation: require('sass')
+    }).end()
+    .end()
+    .oneOf('normal-scss') // *.scss
     .use('mini-css-extract-plugin').loader(MiniCssExtractPlugin.loader).options(miniCssOptions).end()
     .use('css-loader').loader('css-loader').end()
     .use('postcss-loader').loader('postcss-loader').end()
