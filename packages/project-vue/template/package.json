@@ -24,7 +24,6 @@
     "@vue/babel-plugin-transform-vue-jsx": "^1.1.2",
     "@vue/eslint-config-standard": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "@yy/legoflow-plugin-sentry": "*",
     "eslint": "^7.19.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
