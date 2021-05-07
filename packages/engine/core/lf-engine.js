@@ -20,7 +20,7 @@ cli
 cli
   .command('build', '构建项目')
   .option('--base64ImageMaxSize <base64ImageMaxSize>', '转为 base64 图片最大阀值（kb）')
-  .option('--disableFileNameHash <disableFileNameHash>', '禁止文件名带 hash 值')
+  .option('--disableFileNameHash', '禁止文件名带 hash 值')
   .action(options => require('./build')(options))
 
 /**
