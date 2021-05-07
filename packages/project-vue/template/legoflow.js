@@ -16,6 +16,7 @@ module.exports = ({ webpackConfig }) => {
   webpackConfig
     .module
     .rule('vue')
+    .before('js')
     .test(/\.vue$/)
     .use('vue-loader').loader('vue-loader').options({
       compilerOptions: {
