@@ -17,7 +17,7 @@ module.exports = () => {
   config.mode(mode)
 
   // devtool
-  config.devtool(sourceMap)
+  sourceMap && config.devtool(sourceMap)
 
   // entry
   require('./entry')({ config })

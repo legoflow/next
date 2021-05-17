@@ -8,7 +8,8 @@ const logProgress = require('./common/log-progress')
 
 module.exports = async options => {
   options.base64ImageMaxSize && (process.env.lf$base64ImageMaxSize = options.base64ImageMaxSize)
-  options.disableFileNameHash && (process.env.lf$disableFileNameHash = options.disableFileNameHash)
+  options.disableFileNameHash === true && (process.env.lf$disableFileNameHash = true)
+  options.disableSourceMap === true && (process.env.lf$disableSourceMap = true)
 
   const mode = 'production'
 

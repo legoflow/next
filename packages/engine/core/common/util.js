@@ -45,6 +45,9 @@ exports.extendConfig = () => {
  * 获取 sourceMap
  */
 exports.getSourceMap = () => {
+  if (process.env.lf$disableSourceMap) {
+    return null
+  }
   return getMode() === 'development' ? 'inline-source-map' : 'source-map'
 }
 
