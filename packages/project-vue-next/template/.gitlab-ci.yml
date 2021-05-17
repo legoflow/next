@@ -1,4 +1,4 @@
-image: harbor.duowan.com/front_end/node:12.7.0
+image: harbor.duowan.com/ued/kda
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -13,13 +13,12 @@ stages:
 before_script:
   - yarn config set registry https://npm-registry.duowan.com
 
-# 构建
-build:
+# 构建 - 测试环境
+build_test:
   stage: build
   tags:
     - yyci_office
   only:
-    - master
     - test
   artifacts:
     expire_in: 1 week
@@ -28,26 +27,43 @@ build:
     - package.json
   script:
     - yarn install
-    - npm run build
+    - npm run build:test
 
-.release:
+# 构建 - 生产环境
+build_prod:
+  stage: build
+  tags:
+    - yyci_office
+  only:
+    - master
+  artifacts:
+    expire_in: 1 week
+    paths:
+    - dist
+    - package.json
+  script:
+    - yarn install
+    - npm run build:prod
+
+# 发布 - 测试环境
+release_test:
+  only:
+    - test
   stage: release
   tags:
     - yyci_office
   script:
     - yarn global add @yy/rv-cli
-    - find ./dist/js/ -name '*.map' -type f -print -exec rm -rf {} \;
     - rv dist --ignoreNotice
-
-# 发布 - 测试环境
-release_test:
-  extends: .release
-  only:
-    - test
 
 # 发布 - 生产环境
 release_prod:
-  extends: .release
   when: manual
   only:
     - master
+  stage: release
+  tags:
+    - yyci_office
+  script:
+    - yarn global add @yy/rv-cli
+    - rv dist --ignoreNotice
