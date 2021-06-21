@@ -5,8 +5,9 @@
     "./packages/*"
   ],
   "scripts": {
+    "test:create-template": "cd __test__ && node ../packages/create-lf-app/index.js",
     "lint:check": "eslint",
-    "release": "lerna publish --conventional-commits"
+    "release": "lerna publish"
   },
   "author": "lijialiang@yy.com",
   "license": "MIT",

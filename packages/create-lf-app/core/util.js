@@ -12,7 +12,7 @@ const chalk = require('chalk')
  * 临时文件夹
  */
 const getTmp = () => {
-  const tmp = path.resolve(__dirname, '../../tmp')
+  const tmp = path.resolve(__dirname, '../tmp')
   !fs.existsSync(tmp) && fs.mkdirSync(tmp)
   return tmp
 }

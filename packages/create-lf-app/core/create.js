@@ -5,7 +5,7 @@
 const fs = require('fs-extra')
 const path = require('path')
 const chalk = require('chalk')
-const { downloadTemplate, remoteTemplatePrefix } = require('./common/util')
+const { downloadTemplate, remoteTemplatePrefix } = require('./util')
 const inquirer = require('inquirer')
 const glob = require('glob')
 const mustache = require('mustache')
@@ -109,7 +109,7 @@ module.exports = async ({ name, remote }) => {
       const content = mustache.render(fs.readFileSync(file, 'utf8'), {
         name: projectName
       })
-      fs.writeFileSync(distFile, content, 'utf8')
+      fs.outputFileSync(distFile, content, 'utf8')
     }
   })
 

@@ -6,7 +6,7 @@ process.on('unhandledRejection', error => {
 })
 
 const chalk = require('chalk')
-const { name, version } = require('../package.json')
+const { name, version } = require('./package.json')
 
 console.log('\n')
 console.log(chalk.blueBright.bold(`${name} v${version}\n`))
@@ -20,7 +20,7 @@ cli
   .command('[name]', '创建项目')
   .option('--remote [remote]', '远程项目模板')
   .action(async (name, options) => {
-    const { remote } = options.remote
+    const { remote } = options
     require('./core/create')({ name, remote })
   })
 

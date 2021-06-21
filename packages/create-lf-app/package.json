@@ -16,6 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/legoflow/next.git"
   },
+  "files": [
+    "index.js",
+    "core"
+  ],
   "engines": {
     "node": ">=8.0.0"
   },
@@ -23,9 +27,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/legoflow/next/issues"
-  },
-  "scripts": {
-    "test": "./bin/cli.js"
   },
   "homepage": "https://github.com/legoflow/next#readme",
   "dependencies": {
@@ -42,9 +43,9 @@
     "ora": "^3.4.0"
   },
   "bin": {
-    "create-lf": "./bin/cli.js",
-    "create-lf-app": "./bin/cli.js",
-    "create-legoflow": "./bin/cli.js",
-    "create-legoflow-app": "./bin/cli.js"
+    "create-lf": "index.js",
+    "create-lf-app": "index.js",
+    "create-legoflow": "index.js",
+    "create-legoflow-app": "index.js"
   }
 }
