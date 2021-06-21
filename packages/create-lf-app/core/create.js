@@ -135,6 +135,6 @@ module.exports = async ({ name, remote }) => {
   console.log('👉 Get started with the following commands:\n')
 
   answers.isNewProjectFolder && console.log(`${chalk.gray('$')} ${chalk.cyan(`cd ${projectName}`)}`)
-  console.log(`${chalk.gray('$')} ${chalk.cyan('yarn install')}\n`)
+  console.log(`${chalk.gray('$')} ${chalk.cyan('yarn install')}`)
   console.log(`${chalk.gray('$')} ${chalk.cyan('yarn start')}\n`)
 }
