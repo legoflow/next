@@ -106,6 +106,10 @@ module.exports = async ({ name, remote }) => {
     if (!fs.lstatSync(file).isDirectory() && !excludeFiles.includes(basename)) {
       let distFile = path.normalize(file).replace(projectTemplatePath, projectPath)
       if (basename[0] === '_') distFile = distFile.replace(basename, basename.replace('_', '.'))
+      if (/png|jpg|jpeg|gif/.exec(basename)) {
+        fs.moveSync(file, distFile)
+        return
+      }
       let content = fs.readFileSync(file, 'utf8')
       if (varRenderFiles.includes(basename)) {
         content = mustache.render(content, {
