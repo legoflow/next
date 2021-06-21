@@ -9,7 +9,6 @@ stages:
   - build
   - release
 
-# 安装依赖
 before_script:
   - yarn config set registry https://npm-registry.duowan.com
 
@@ -36,8 +35,7 @@ build:
     - yyci_office
   script:
     - yarn global add @yy/rv-cli
-    - find ./dist/js/ -name '*.map' -type f -print -exec rm -rf {} \;
-    - rv dist --ignoreNotice
+    - rv dist
 
 # 发布 - 测试环境
 release_test:

@@ -9,7 +9,6 @@ stages:
   - build
   - release
 
-# 安装依赖
 before_script:
   - yarn config set registry https://npm-registry.duowan.com
 
@@ -54,7 +53,7 @@ release_test:
     - yyci_office
   script:
     - yarn global add @yy/rv-cli
-    - rv dist --ignoreNotice
+    - rv dist
 
 # 发布 - 生产环境
 release_production:
@@ -66,4 +65,4 @@ release_production:
     - yyci_office
   script:
     - yarn global add @yy/rv-cli
-    - rv dist --ignoreNotice
+    - rv dist

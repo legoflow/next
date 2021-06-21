@@ -2,16 +2,6 @@
  * 扩展 legoflow-engine webpack 配置 vue 项目
  */
 module.exports = ({ webpackConfig }) => {
-  // entry
-  webpackConfig
-    .entryPoints
-    .delete('main')
-    .clear()
-    .end()
-    .entry('main')
-    .add('./src/main.ts')
-    .end()
-
   // rule - vue
   webpackConfig
     .module
@@ -54,6 +44,5 @@ module.exports = ({ webpackConfig }) => {
   // vue plugin
   webpackConfig
     .plugin('vue-loader')
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     .use(require('vue-loader/lib/plugin'))
 }

@@ -18,7 +18,6 @@
     "jsx": "preserve"
   },
   "include": [
-    "@types",
     "src"
   ],
   "exclude": [

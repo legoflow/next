@@ -5,7 +5,7 @@
   "scripts": {
     "start": "lf-engine dev",
     "dev": "lf-engine dev",
-    "build": "lf-engine build",
+    "build": "lf-engine build --disableSourceMap",
     "lint:check": "eslint --ext .js,.ts,.tsx src",
     "lint:fix": "eslint --ext .js,.ts,.tsx src --fix"
   },

@@ -10,9 +10,7 @@ $ yarn install
 
 ```sh
 $ yarn start
-
 # 或者
-
 $ yarn dev
 ```
 

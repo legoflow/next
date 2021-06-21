@@ -3,6 +3,8 @@
  */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { VueLoaderPlugin } = require('vue-loader')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const webpack = require('webpack')
 
 module.exports = ({ webpackConfig }) => {
   // entry
@@ -68,4 +70,10 @@ module.exports = ({ webpackConfig }) => {
   webpackConfig
     .plugin('vue-loader')
     .use(VueLoaderPlugin)
+
+  webpackConfig
+    .plugin('User/DefinePlugin')
+    .use(webpack.DefinePlugin, [{
+      'process.env.BUILD_MODE': `"${process.env.BUILD_MODE}"`
+    }])
 }

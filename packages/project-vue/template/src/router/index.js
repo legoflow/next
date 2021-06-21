@@ -3,10 +3,10 @@ import VueRouter, { RouteConfig } from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes: Array<RouteConfig> = [
+const routes = [
   {
     path: '/',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '@/pages/home.vue')
   }
 ]
 

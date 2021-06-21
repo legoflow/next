@@ -18,7 +18,6 @@
     "jsx": "react"
   },
   "include": [
-    "@types",
     "src"
   ],
   "exclude": [
