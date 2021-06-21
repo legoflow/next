@@ -12,8 +12,12 @@
   },
   "homepage": "https://github.com/legoflow/next#readme",
   "bin": {
-    "lf-engine": "./bin/cli.js"
+    "lf-engine": "index.js"
   },
+  "files": [
+    "index.js",
+    "core"
+  ],
   "dependencies": {
     "@babel/core": "^7.12.13",
     "@babel/plugin-transform-runtime": "^7.12.15",

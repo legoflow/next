@@ -35,13 +35,11 @@ module.exports = ({ modules, filename }) => {
   }
 
   const compiler = webpack(webpackCofig)
-
-  compiler.run((err, stats) => {
-    if (err) {
-      console.error(err)
+  compiler.run((error, stats) => {
+    if (error) {
+      console.erroror(error)
       return
     }
-
     console.log(stats.toString({
       chunks: false,
       colors: true

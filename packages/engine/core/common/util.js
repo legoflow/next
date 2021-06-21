@@ -34,7 +34,6 @@ exports.getProjectRoot = getProjectRoot
 exports.extendConfig = () => {
   const extendConfigScript = path.resolve(getProjectRoot(), 'legoflow.js')
   const extendConfigFunc = fs.existsSync(extendConfigScript) ? require(extendConfigScript) : undefined
-
   switch (typeof extendConfigFunc) {
     case 'function':
       return extendConfigFunc
@@ -58,7 +57,6 @@ exports.isWithHash = () => {
   if (process.env.lf$disableFileNameHash) {
     return ''
   }
-
   return getMode() === 'development' ? '' : '.[contenthash:8]'
 }
 
@@ -72,11 +70,9 @@ exports.logVersion = () => console.log(chalk.blue.bold(`LegoFlow Engine v${versi
  */
 const getPackageJson = () => {
   const projectPackageJson = path.resolve(getProjectRoot(), 'package.json')
-
   if (!fs.existsSync(projectPackageJson)) {
     return {}
   }
-
   try {
     return JSON.parse(fs.readFileSync(projectPackageJson, 'utf8'))
   } catch (error) {

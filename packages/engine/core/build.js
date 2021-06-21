@@ -51,7 +51,6 @@ module.exports = async options => {
       }))
       process.exit(1)
     }
-
     console.log(stats.toString({
       chunks: false,
       colors: true
