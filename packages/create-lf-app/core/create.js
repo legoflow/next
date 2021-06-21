@@ -100,15 +100,18 @@ module.exports = async ({ name, remote }) => {
   }
 
   const excludeFiles = ['.DS_Store']
-
+  const varRenderFiles = ['package.json', 'README.md']
   glob.sync(path.resolve(projectTemplatePath, './**/*'), { dot: true }).forEach(file => {
     const basename = path.basename(file)
     if (!fs.lstatSync(file).isDirectory() && !excludeFiles.includes(basename)) {
       let distFile = path.normalize(file).replace(projectTemplatePath, projectPath)
       if (basename[0] === '_') distFile = distFile.replace(basename, basename.replace('_', '.'))
-      const content = mustache.render(fs.readFileSync(file, 'utf8'), {
-        name: projectName
-      })
+      let content = fs.readFileSync(file, 'utf8')
+      if (varRenderFiles.includes(basename)) {
+        content = mustache.render(content, {
+          name: projectName
+        })
+      }
       fs.outputFileSync(distFile, content, 'utf8')
     }
   })

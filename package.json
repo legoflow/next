@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "test:create-template": "cd __test__ && node ../packages/create-lf-app/index.js",
+    "test:create-info": "node ./packages/create-lf-app/index.js info",
     "lint:check": "eslint",
     "release": "lerna publish"
   },
