@@ -30,7 +30,7 @@ build_test:
     - npm run build:test
 
 # 构建 - 生产环境
-build_prod:
+build_production:
   stage: build
   tags:
     - yyci_office
@@ -43,7 +43,7 @@ build_prod:
     - package.json
   script:
     - yarn install
-    - npm run build:prod
+    - npm run build:production
 
 # 发布 - 测试环境
 release_test:
@@ -57,7 +57,7 @@ release_test:
     - rv dist --ignoreNotice
 
 # 发布 - 生产环境
-release_prod:
+release_production:
   when: manual
   only:
     - master

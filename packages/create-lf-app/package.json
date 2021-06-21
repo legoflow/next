@@ -7,7 +7,9 @@
     "legoflow-cli",
     "lf",
     "create-lf-app",
-    "lf-app"
+    "create-lf",
+    "create-legoflow-app",
+    "create-legoflow"
   ],
   "main": "index.js",
   "repository": {
@@ -40,6 +42,9 @@
     "ora": "^3.4.0"
   },
   "bin": {
-    "create-lf-app": "./bin/cli.js"
+    "create-lf": "./bin/cli.js",
+    "create-lf-app": "./bin/cli.js",
+    "create-legoflow": "./bin/cli.js",
+    "create-legoflow-app": "./bin/cli.js"
   }
 }

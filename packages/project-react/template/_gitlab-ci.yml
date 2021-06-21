@@ -46,7 +46,7 @@ release_test:
     - test
 
 # 发布 - 生产环境
-release_prod:
+release_production:
   extends: .release
   when: manual
   only:

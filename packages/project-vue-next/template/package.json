@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env BUILD_MODE=dev lf-engine dev",
-    "dev": "cross-env BUILD_MODE=dev lf-engine dev",
+    "start": "cross-env BUILD_MODE=develop lf-engine dev",
+    "dev": "cross-env BUILD_MODE=develop lf-engine dev",
     "build:test": "cross-env BUILD_MODE=test lf-engine build --disableSourceMap",
-    "build:prod": "cross-env BUILD_MODE=prod lf-engine build --disableSourceMap",
+    "build:production": "cross-env BUILD_MODE=production lf-engine build --disableSourceMap",
     "build:dll": "lf-engine dll -m vue,vue-router,vuex -o vendor",
     "lint:check": "eslint --ext .js,.ts,.vue src",
     "lint:fix": "eslint --ext .js,.ts,.vue src --fix"

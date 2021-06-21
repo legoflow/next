@@ -1,12 +1,10 @@
-export {}
+export const enum BUILD_MODE {
+  DEVELOP = 'develop',
+  TEST = 'test',
+  PRODUCTION = 'production'
+}
 
 declare global {
-  const enum BUILD_MODE {
-    DEV = 'dev',
-    TEST = 'test',
-    PROD = 'prod'
-  }
-
   namespace NodeJS {
     interface ProcessEnv {
       [key: string]: string | undefined

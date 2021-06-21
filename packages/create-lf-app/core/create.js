@@ -8,8 +8,7 @@ const chalk = require('chalk')
 const { downloadTemplate, remoteTemplatePrefix } = require('./common/util')
 const inquirer = require('inquirer')
 const glob = require('glob')
-const execa = require('execa')
-const Mustache = require('mustache')
+const mustache = require('mustache')
 const ora = require('ora')
 const del = require('del')
 const got = require('got')
@@ -47,7 +46,7 @@ module.exports = async ({ name, remote }) => {
 
     spinner.stop()
 
-    allRemoteProjectTemplateJsonData.map(({ package: item }) => {
+    allRemoteProjectTemplateJsonData.forEach(({ package: item }) => {
       if (item.description === 'archived') return
       if (item.name.indexOf(remoteTemplatePrefix) >= 0) {
         const name = item.name.split(remoteTemplatePrefix)[1]
@@ -77,12 +76,9 @@ module.exports = async ({ name, remote }) => {
   // 拉取远程模板
   if (remote) {
     const spinner = ora('正在下载远程项目模板...').start()
-
     const { folder, template } = await downloadTemplate(remote)
-
     spinner.stop()
     console.log(chalk.green('👏 下载完成\n'))
-
     projectTemplatePath = template
     projectTemplateRemoteFolder = folder
   }
@@ -92,16 +88,8 @@ module.exports = async ({ name, remote }) => {
   const answers = {
     // 是否新建文件夹，默认新建文件夹
     isNewProjectFolder: !!name,
-    // node_modules 安装方式，默认使用 yarn
-    nodeModulesInstallMethod: 'yarn',
     // node_modules register
     registerUrl: 'https://registry.npmjs.org/'
-  }
-
-  try {
-    await execa.command('yarn -v')
-  } catch (error) {
-    answers.nodeModulesInstallMethod = 'npm'
   }
 
   /** answers resolve complete **/
@@ -111,54 +99,28 @@ module.exports = async ({ name, remote }) => {
     fs.mkdirSync(projectPath)
   }
 
-  const needResolveFiles = ['package.json', 'README.md']
-  const noIncludeFiles = ['.DS_Store']
+  const excludeFiles = ['.DS_Store']
 
-  // 识别各类文件
-  const files = glob.sync(path.resolve(projectTemplatePath, './**/*'), { dot: true }).filter(file => {
-    const name = path.basename(file)
-
-    if (needResolveFiles.indexOf(name) >= 0) {
-      needResolveFiles[needResolveFiles.indexOf(name)] = file
-    } else if (!fs.lstatSync(file).isDirectory() && noIncludeFiles.indexOf(name) < 0) {
-      return true
-    }
-
-    return false
-  })
-
-  // 复制普通文件
-  files.forEach(file => fs.copySync(path.normalize(file), path.normalize(file).replace(projectTemplatePath, projectPath)))
-
-  // 创建 .gitignore
-  fs.writeFileSync(path.resolve(projectPath, '.gitignore'), 'dist\nnode_modules\nyarn-error.log\nnpm-debug.log')
-
-  // 复制【变量注入】文件
-  needResolveFiles.forEach(file => {
-    file = path.normalize(file)
-
-    if (file.indexOf(projectTemplatePath) === 0) {
-      const basename = path.basename(file)
-      const filePath = file.replace(projectTemplatePath, projectPath).replace(basename, '')
-      const content = Mustache.render(fs.readFileSync(file, 'utf8'), {
+  glob.sync(path.resolve(projectTemplatePath, './**/*'), { dot: true }).forEach(file => {
+    const basename = path.basename(file)
+    if (!fs.lstatSync(file).isDirectory() && !excludeFiles.includes(basename)) {
+      let distFile = path.normalize(file).replace(projectTemplatePath, projectPath)
+      if (basename[0] === '_') distFile = distFile.replace(basename, basename.replace('_', '.'))
+      const content = mustache.render(fs.readFileSync(file, 'utf8'), {
         name: projectName
       })
-
-      fs.writeFileSync(filePath + basename, content, 'utf8')
+      fs.writeFileSync(distFile, content, 'utf8')
     }
   })
 
   // 删除从远程拉取的项目模板
   remote && del.sync(projectTemplateRemoteFolder, { force: true })
 
-  console.log(`✨ Created project in ${chalk.yellow(projectPath)}`)
-  console.log('🚀 Installing dependencies...\n')
-
   // 创建 .npmrc (duowan npm 源)
   template.description.indexOf('YY') >= 0 && fs.writeFileSync(path.resolve(projectPath, '.npmrc'), 'registry=https://npm-registry.duowan.com')
 
-  // 安装 node_modules 依赖
-  await execa.command(`${answers.nodeModulesInstallMethod} install`, { cwd: projectPath, stdio: 'inherit' })
+  console.log(`✨ Created project in ${chalk.yellow(projectPath)}`)
+  console.log('🚀 Installing dependencies...\n')
 
   /** complete **/
 
@@ -166,5 +128,6 @@ module.exports = async ({ name, remote }) => {
   console.log('👉 Get started with the following commands:\n')
 
   answers.isNewProjectFolder && console.log(`${chalk.gray('$')} ${chalk.cyan(`cd ${projectName}`)}`)
-  console.log(`${chalk.gray('$')} ${chalk.cyan(`${answers.nodeModulesInstallMethod} start`)}\n`)
+  console.log(`${chalk.gray('$')} ${chalk.cyan('yarn install')}\n`)
+  console.log(`${chalk.gray('$')} ${chalk.cyan('yarn start')}\n`)
 }
