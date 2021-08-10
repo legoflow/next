@@ -6,17 +6,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Ref, ref } from 'vue'
+<script lang="ts" setup>
+import { ref } from 'vue'
 
-export default {
-  setup (): { title: string, count: Ref<number> } {
-    const title = 'Vue.js From LegoFlow'
-    const count = ref(0)
-
-    return { title, count }
-  }
-}
+const title = 'Vue.js From LegoFlow'
+const count = ref(0)
 </script>
 
 <style scoped lang="scss">
