@@ -5,6 +5,8 @@
 const { VueLoaderPlugin } = require('vue-loader')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require('webpack')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = ({ webpackConfig }) => {
   // entry
@@ -24,7 +26,8 @@ module.exports = ({ webpackConfig }) => {
     .test(/\.*(ts|tsx)$/)
     .use('babel-loader').loader('babel-loader').end()
     .use('ts-loader').loader('ts-loader').options({
-      appendTsSuffixTo: [/\.vue$/]
+      appendTsSuffixTo: [/\.vue$/],
+      transpileOnly: true
     }).end()
 
   // rule - vue
@@ -70,6 +73,10 @@ module.exports = ({ webpackConfig }) => {
   webpackConfig
     .plugin('vue-loader')
     .use(VueLoaderPlugin)
+
+  webpackConfig
+    .plugin('fork-ts-checker')
+    .use(ForkTsCheckerWebpackPlugin)
 
   webpackConfig
     .plugin('User/DefinePlugin')

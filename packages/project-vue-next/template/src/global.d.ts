@@ -1,8 +1,4 @@
-export const enum BUILD_MODE {
-  DEVELOP = 'develop',
-  TEST = 'test',
-  PRODUCTION = 'production'
-}
+import { BUILD_MODE } from './type'
 
 declare global {
   namespace NodeJS {

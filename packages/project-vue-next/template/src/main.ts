@@ -3,9 +3,7 @@ import { createApp } from 'vue'
 import router from '@/router'
 import store from '@/store'
 import App from '@/App.vue'
-import { BUILD_MODE } from './global'
-
-!window.Promise && (window.Promise = Promise)
+import { BUILD_MODE } from '@/type'
 
 createApp(App).use(router).use(store).mount('#app')
 

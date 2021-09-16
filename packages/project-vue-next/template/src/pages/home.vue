@@ -1,8 +1,13 @@
 <template>
   <div class="home">
-    <img src="@/images/logo.png" alt="logo"/>
+    <img
+      src="@/images/logo.png"
+      alt="logo"
+    >
     <h1>{{ title }}</h1>
-    <button @click="count++">count is: {{ count }}</button>
+    <button @click="count++">
+      count is: {{ count }}
+    </button>
   </div>
 </template>
 
@@ -10,6 +15,7 @@
 import { ref } from 'vue'
 
 const title = 'Vue.js From LegoFlow'
+
 const count = ref(0)
 </script>
 
