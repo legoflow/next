@@ -25,6 +25,7 @@
     "@vue/compiler-sfc": "^3.2.0",
     "@vue/eslint-config-standard": "^6.1.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "cache-loader": "^4.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.19.0",
     "eslint-plugin-import": "^2.22.1",
@@ -76,7 +77,15 @@
       "defineEmits": "readonly",
       "defineExpose": "readonly",
       "withDefaults": "readonly"
-    }
+    },
+    "overrides": [
+      {
+        "files": ["legoflow.js"],
+        "rules": {
+          "@typescript-eslint/no-var-requires": ["off"]
+        }
+      }
+    ]
   },
   "lint-staged": {
     "./src/**/*.{js,jsx,ts,tsx,vue}": [

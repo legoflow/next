@@ -1,14 +1,14 @@
 /**
  * 扩展 legoflow-engine webpack 配置 vue 项目
  */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { VueLoaderPlugin } = require('vue-loader')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require('webpack')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { VueLoaderPlugin } = require('vue-loader')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = ({ webpackConfig }) => {
+  webpackConfig
+    .cache({ type: 'filesystem' })
+
   // entry
   webpackConfig
     .entryPoints
@@ -24,6 +24,7 @@ module.exports = ({ webpackConfig }) => {
     .module
     .rule('ts')
     .test(/\.*(ts|tsx)$/)
+    .use('cache-loader').loader('cache-loader').end()
     .use('babel-loader').loader('babel-loader').end()
     .use('ts-loader').loader('ts-loader').options({
       appendTsSuffixTo: [/\.vue$/],
